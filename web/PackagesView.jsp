@@ -12,33 +12,21 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#05386b">
-
-
-
-        </nav>
     </header>
     <br>
 
     <div class="row">
-
-
         <div class="container">
-
-            <h3 class="text-center">Packages</h3>
+           <h3 class="text-center">Packages</h3>
             <hr>
             <div class="container text-left">
-
-
             </div>
             <br>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-
                         <th>Package Id</th>
                         <th>Package Date</th>
-
                         <th>View</th>
                         <th> Make Shipment </th>
                     </tr>
@@ -46,9 +34,7 @@
                 <tbody>
 
                     <c:forEach var="user" items="${listOrders}">
-
                         <tr>
-
                             <td>
                                 <c:out value="${user.getPackageId()}" />
                             </td>
@@ -57,22 +43,11 @@
                             </td>
                             <td>
                                 <a href="PackageItemsServlet?packageId=<c:out value='${user.getPackageId()}' />">View Package</a>
-
-
-
-
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                             </td>
                             <td>
                                 <a href="CreateShipment?packageId=<c:out value='${user.getPackageId()}' />">Ship Package</a>
-
-
-
-
-
                             </td>
-
-
                         </tr>
                     </c:forEach>
 

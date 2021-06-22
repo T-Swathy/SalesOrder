@@ -8,7 +8,7 @@ import java.sql.*;
 
 /**
  *
- * @author vanit
+ * @author swathy
  */
 public class OrderDao {
 

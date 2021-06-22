@@ -18,10 +18,7 @@
                 <div>
                     <a href="ViewServlet" class="navbar-brand"> Package Details </a>
                 </div>
-
-
             </nav>
-
         </header>
         <div class="container col-md-10"><center>
                 <h3 class="text-center">Package Details</h3>
@@ -29,9 +26,6 @@
                     <div class="card-body">
                         <form class="well form-horizontal"  method="post"  >
                             <fieldset>
-
-
-
                                 <div class="form-group">
                                     <label class="col-md-8 control-label" >Package Id</label> 
                                     <div class="col-md-15 inputGroupContainer">
@@ -39,19 +33,13 @@
                                             <input class="form-control"  type="text" name="packageId" value="<%= request.getAttribute("packageId")%>">
 
                                         </div>
-
                                     </div>
 
                                 </div>
-
-
-
                                 <table  class="table table-bordered">
                                     <tr>
                                         <th>Item Name</th>
                                         <th>Quantity </th>
-
-
                                         <c:forEach var="user" items="${OrderNo}">
                                         <tr id="row1">
                                             <td>
@@ -60,16 +48,10 @@
                                             <td>
                                                 <c:out value="${user.getQuantityPacked()}" />
                                             </td>
-
-
                                         </tr> </c:forEach>
                                 </table><br>
                                 &nbsp;&nbsp; 
-
-
-
-
-                            </fieldset>
+                        </fieldset>
                         </form></div>
-                    </body>
-                    </html>
+       </body>
+   </html>

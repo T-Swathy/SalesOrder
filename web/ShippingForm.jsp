@@ -13,14 +13,11 @@
 
         <header>
             <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#05386b">
-
             </nav>
         </header>
         <br>
 
         <div class="row">
-
-
             <div class="container">
                 <div class="container col-md-10">
                     <div class="card mx-auto"  style="width: 46rem;">
@@ -29,9 +26,6 @@
                             <br>
                             <table class="table table-bordered">
                                 <form action="AddShipment" method="post">
-
-
-
                                     <div class="form-group"> 
                                         <label  class="col-md-4 control-label" >Package #</label>
                                         <div class="col-md-10 inputGroupContainer">
@@ -76,12 +70,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-
-
                             </table>
                             <table class="table table-bordered">
                                 <thead>

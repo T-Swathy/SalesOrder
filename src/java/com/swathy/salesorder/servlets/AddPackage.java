@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author vanit
+ * @author swathy
  */
 @WebServlet(urlPatterns = {"/AddPackage"})
 public class AddPackage extends HttpServlet {

@@ -140,12 +140,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-                                &nbsp;&nbsp;            
-
-
-                        </fieldset>
-                    </form></div>
-                </body>
-                </html>
+                            &nbsp;&nbsp;            
+                    </fieldset>
+             </form></div>
+        </body>
+    </html>

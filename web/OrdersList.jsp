@@ -14,16 +14,11 @@
 
         <header>
             <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#05386b">
-
-
-
             </nav>
         </header>
         <br>
 
         <div class="row">
-
-
             <div class="container">
                 <h3 class="text-center">All Sales Orders</h3>
                 <hr>
@@ -39,14 +34,12 @@
                             <th>Sales Order No</th>
                             <th>Sales Order Date</th>
                             <th>Customer Name</th>
-
                             <th>Invoice Status</th>
                             <th>Payment Status</th>
                             <th>Change Status</th>
                             <th> Shipment </th>
                             <th>View</th>
                             <th>Delivered</th>
-
                             <th>Invoice</th>
                         </tr>
                     </thead>
@@ -71,41 +64,21 @@
                                     <c:out value="${user.getPaymentStatus()}" />
                                 </td>
                                 <td>
-
-
-                                    <a href="CreatePackage?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Create package</a>
-
+                                <a href="CreatePackage?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Create package</a>
                                 </td>
                                 <td>
-
-
-                                    <a href="PackageList?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Create Shipment</a>
-
+                                <a href="PackageList?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Create Shipment</a>
                                 </td><td>
                                     <a href="View1Servlet?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">View Order</a>
-
-
-
-
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
-
-
-                                    <a href="ShippingList?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Mark as delivered</a>
-
+                                <a href="ShippingList?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Mark as delivered</a>
                                 </td>
-
                                 <td>
                                     <a href="InvoiceServlet?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Create Invoice</a>
-
-
-
-
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
-
-
                             </tr>
                         </c:forEach>
 

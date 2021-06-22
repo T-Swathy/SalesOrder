@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author vanit
+ * @author swathy
  */
 public class DbOperations {
     public static Connection getConnection(){  

@@ -3,7 +3,7 @@ package com.swathy.salesorder.models;
 
 /**
  *
- * @author vanit
+ * @author swathy
  */
 public class Package {
 

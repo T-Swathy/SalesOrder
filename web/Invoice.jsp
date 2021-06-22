@@ -27,11 +27,9 @@
         </style>
     </head>
     <body>
-
-
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
+                 <div class="col-xs-12">
                     <div class="invoice-title">
                         <h2>Invoice</h2><h3 class="pull-right">Order # "<%= request.getAttribute("SalesOrderNo")%>"</h3>
                     </div>
@@ -92,7 +90,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                       
                                         <c:forEach var="user" items="${OrderNo}">
 
                                             <tr>

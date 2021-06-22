@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author vanit
+ 
+ * @author swathy
  */
 @WebServlet(urlPatterns = {"/AddDelivery"})
 public class AddDelivery extends HttpServlet {
