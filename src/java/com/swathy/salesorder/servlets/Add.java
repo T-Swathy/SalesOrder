@@ -1,6 +1,5 @@
 package com.swathy.salesorder.servlets;
 
-
 // models
 import com.swathy.salesorder.models.Order;
 import com.swathy.salesorder.models.Item;
@@ -24,59 +23,55 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/Add"})
 public class Add extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              
-        response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-          
-        String customername=request.getParameter("customername");  
-        String salesorderno=request.getParameter("salesorderno");  
-        String salesorderdate=request.getParameter("salesorderdate");  
-        String expectedshipmentdate=request.getParameter("expectedshipmentdate");  
-        String paymentterms=request.getParameter("paymentterms");  
-        String shipmentcharge=request.getParameter("shipmentcharge");  
-        String totalamount=request.getParameter("totalamount");  
-        String[] items=request.getParameterValues("itemname[]");
-        String[] quantity=request.getParameterValues("quantity[]");
-        String[] rate=request.getParameterValues("rate[]");
-        String[] discount=request.getParameterValues("discount[]");
-        String[] amount=request.getParameterValues("amount[]");
-       
-        Order e=new Order();  
-        e.setCustomerName(customername);  
-        e.setSalesOrderNo(salesorderno);  
-        e.setSalesOrderDate(salesorderdate);  
-        e.setExpectedShipmentDate( expectedshipmentdate);  
-        e.setPaymentTerms(paymentterms); 
-        e.setShipmentCharge(shipmentcharge);  
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        String customername = request.getParameter("customername");
+        String salesorderno = request.getParameter("salesorderno");
+        String salesorderdate = request.getParameter("salesorderdate");
+        String expectedshipmentdate = request.getParameter("expectedshipmentdate");
+        String paymentterms = request.getParameter("paymentterms");
+        String shipmentcharge = request.getParameter("shipmentcharge");
+        String totalamount = request.getParameter("totalamount");
+        String[] items = request.getParameterValues("itemname[]");
+        String[] quantity = request.getParameterValues("quantity[]");
+        String[] rate = request.getParameterValues("rate[]");
+        String[] discount = request.getParameterValues("discount[]");
+        String[] amount = request.getParameterValues("amount[]");
+
+        Order e = new Order();
+        e.setCustomerName(customername);
+        e.setSalesOrderNo(salesorderno);
+        e.setSalesOrderDate(salesorderdate);
+        e.setExpectedShipmentDate(expectedshipmentdate);
+        e.setPaymentTerms(paymentterms);
+        e.setShipmentCharge(shipmentcharge);
         e.setTotalAmount(totalamount);
-        
+
         Item item = new Item();
         item.setProducts(items);
         item.setQuantity(quantity);
         item.setRate(rate);
         item.setDiscount(discount);
         item.setAmount(amount);
-        int status=OrderDao.save(e) & ItemDao.saveItems(item,salesorderno);  
-      
-        if(status>0){  
-          out.println("<script type=\"text/javascript\">");
-          out.println("alert('Sales Order Created Successfully ');");
-          out.println("</script>");
-          request.getRequestDispatcher("index.html").include(request, response);  
-        }else{  
-             out.println("<script type=\"text/javascript\">");
-             out.println("alert('Sorry!The sales order is not created');");
-             out.println("</script>");
-        }  
-          
-        out.close();  
-    }  
-  
-        
-    
+        int status = OrderDao.save(e) & ItemDao.saveItems(item, salesorderno);
+
+        if (status > 0) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Sales Order Created Successfully ');");
+            out.println("</script>");
+            request.getRequestDispatcher("index.html").include(request, response);
+        } else {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Sorry!The sales order is not created');");
+            out.println("</script>");
+        }
+
+        out.close();
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

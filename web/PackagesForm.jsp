@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Package
-    Created on : 16 Jun, 2021, 10:27:34 PM
-    Author     : vanit
---%>
+
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -85,30 +81,30 @@
                                         </tr>
                                     </thead>
 
-                                 
-                                   
 
-                                   
 
-                                        <tr>
-                                             <c:forEach var="order" items="${OrderNo}">
+
+
+
+                                    <tr>
+                                        <c:forEach var="order" items="${OrderNo}">
                                             <td>
                                                 <input class="form-control" type="text" name="productName[]" value="${order.getProductName()}" >
-                                              
+
                                             </td>
                                             <td>
                                                 <input class="form-control" type ="text" name="productQuantity[]" value="${order.getProductQuantity()}">
                                             </td>
-                                            
+
                                             <td> <input class="form-control" type="text" name="quantitypacked[]" value="${order.getQuantityPacked()}" > </td>
                                             <td>
                                                 <input class="form-control" type="text" name="quantity[]" >
                                             </td>
 
                                         </tr>
-                                         </c:forEach>
-                                   
-                                   
+                                    </c:forEach>
+
+
 
 
                                 </table>

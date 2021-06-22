@@ -29,41 +29,33 @@ public class CreatePackage extends HttpServlet {
         PrintWriter out = response.getWriter();
         String sno = request.getParameter("salesOrderNo");
         List<Item> list = ItemDao.getItemByNo(sno);
-       
-        List<Item> list1=ItemDao.getQuantitiesPacked(sno);
-      
-       System.out.println("hi");
-        
-        
-        
-        request.setAttribute("OrderNo",list);
-        
+
+        List<Item> list1 = ItemDao.getQuantitiesPacked(sno, list);
+
+        // list of item obj 
+        request.setAttribute("OrderNo", list1);
+
         request.setAttribute("salesorderno", sno);
-        
-       
-        
+
         ServletContext sc = this.getServletContext();
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Package.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PackagesForm.jsp");
         dispatcher.forward(request, response);
         out.close();
-       
-    }
-     
 
-     @Override
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
- 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

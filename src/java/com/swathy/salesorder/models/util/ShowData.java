@@ -1,15 +1,12 @@
-
-
 package com.swathy.salesorder.models.util;
 
 /**
  * @author swathy
  */
-
-
 // utility model for displaying data in packages ,shipping since this data is combination of multiple models
 public class ShowData {
-    private String salesOrderNo,salesOrderDate,packageId,packageDate,shipmentId,shipmentDate,quantityPacked;
+
+    private String salesOrderNo, salesOrderDate, packageId, packageDate, shipmentId, shipmentDate, quantityPacked;
 
     public String getSalesOrderNo() {
         return salesOrderNo;
@@ -58,5 +55,5 @@ public class ShowData {
     public void setShipmentDate(String shipmentDate) {
         this.shipmentDate = shipmentDate;
     }
-   
+
 }

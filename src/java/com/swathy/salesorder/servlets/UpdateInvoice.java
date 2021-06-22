@@ -20,22 +20,17 @@ public class UpdateInvoice extends HttpServlet {
         PrintWriter out = response.getWriter();
         Order e = new Order();
         String salesorderno = request.getParameter("salesOrderNo");
+
         int status = OrderDao.updateInvoice(salesorderno);
         if (status > 0) {
 
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Invoice sent successfully!');");
             out.println("</script>");
-            request.getRequestDispatcher("ViewServlet").include(request, response);
-        } else {
-
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Sorry! unable to send Invoice');");
-            out.println("</script>");
-            request.getRequestDispatcher("ViewServlet").include(request, response);
 
         }
 
+        request.getRequestDispatcher("ViewServlet").include(request, response);
         out.close();
 
     }

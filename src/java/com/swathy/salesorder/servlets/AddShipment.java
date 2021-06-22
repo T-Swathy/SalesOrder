@@ -2,6 +2,7 @@ package com.swathy.salesorder.servlets;
 
 import com.swathy.salesorder.models.Shipping;
 import com.swathy.salesorder.repository.OrderDao;
+import com.swathy.salesorder.repository.PackageDao;
 import com.swathy.salesorder.repository.ShippingDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +26,7 @@ public class AddShipment extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String packageId = request.getParameter("packageid");
-        String salesorderno = request.getParameter("salesorderno");
+
         String shippingId = request.getParameter("shipmentid");
         String shippingDate = request.getParameter("shipmentdate");
         String carrier = request.getParameter("carrier");
@@ -37,28 +38,26 @@ public class AddShipment extends HttpServlet {
         shipment.setCarrier(carrier);
         shipment.setTrackingId(trackingId);
 
-        int status = ShippingDao.saveShipment(shipment, packageId, salesorderno) ;
+        int status = ShippingDao.saveShipment(shipment, packageId) & PackageDao.updatePackageStatus(packageId);
         if (status > 0) {
 
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Shipment created successfully!');");
             out.println("</script>");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ViewServlet");
-            dispatcher.forward(request, response);
 
         } else {
 
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Sorry! unable to add Shipment');");
             out.println("</script>");
-             RequestDispatcher dispatcher = request.getRequestDispatcher("ViewServlet");
-            dispatcher.forward(request, response);
+
         }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ViewServlet");
+        dispatcher.forward(request, response);
 
         out.close();
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

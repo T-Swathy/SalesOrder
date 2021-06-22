@@ -1,7 +1,5 @@
 package com.swathy.salesorder.servlets;
 
-
-
 import com.swathy.salesorder.models.Item;
 import com.swathy.salesorder.models.Order;
 import com.swathy.salesorder.repository.ItemDao;
@@ -17,36 +15,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet(urlPatterns = {"/View1Servlet"})
 public class ViewOrdersByIdServlet extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out=response.getWriter();  
-        
-        String sno=request.getParameter("salesOrderNo");  
-        Order o=OrderDao.getOrderById(sno);  
-        List<Item> list=ItemDao.getItemByNo(sno); 
-        
-        request.setAttribute("CustomerName",o.getCustomerName());
-        request.setAttribute("SalesOrderDate",o.getSalesOrderDate());
-        request.setAttribute("ExpectedShipmentDate",o.getExpectedShipmentDate());
-        request.setAttribute("PaymentTerms",o.getPaymentTerms());
-        request.setAttribute("ShipmentCharge",o.getShipmentCharge());
-        request.setAttribute("TotalAmount",o.getTotalAmount());
-        request.setAttribute("SalesOrderNo",sno);
-        
-        request.setAttribute("OrderNo", list);
+
+        PrintWriter out = response.getWriter();
+
+        String sno = request.getParameter("salesOrderNo");
+        Order o = OrderDao.getOrderById(sno);
+        List<Item> list = ItemDao.getItemByNo(sno);
+        List<Item> list1 = ItemDao.getQuantitiesPacked(sno, list);
+        List<Item> list2 = ItemDao.getQuantitiesShipped(sno, list1);
+        List<Item> list3 = ItemDao.getQuantitiesDelivered(sno, list2);
+
+        request.setAttribute("CustomerName", o.getCustomerName());
+        request.setAttribute("SalesOrderDate", o.getSalesOrderDate());
+        request.setAttribute("ExpectedShipmentDate", o.getExpectedShipmentDate());
+        request.setAttribute("PaymentTerms", o.getPaymentTerms());
+        request.setAttribute("ShipmentCharge", o.getShipmentCharge());
+        request.setAttribute("TotalAmount", o.getTotalAmount());
+        request.setAttribute("SalesOrderNo", sno);
+
+        request.setAttribute("OrderNo", list3);
         ServletContext sc = this.getServletContext();
         RequestDispatcher dispatcher = request.getRequestDispatcher("OrderById.jsp");
         dispatcher.forward(request, response);
-      
-        out.close();  
-            
-          
-        
+
+        out.close();
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

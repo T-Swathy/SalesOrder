@@ -8,8 +8,8 @@ package com.swathy.salesorder.models;
 public class Package {
 
     private String packageId;
-    private String packageDate,packageStatus;
-    private String packageQuantity[],itemName[];
+    private String packageDate, packageStatus;
+    private String packageQuantity[], itemName[];
 
     public void setPackageId(String packageId) {
         this.packageId = packageId;

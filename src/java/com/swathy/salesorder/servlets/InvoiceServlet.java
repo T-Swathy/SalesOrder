@@ -1,8 +1,5 @@
 package com.swathy.salesorder.servlets;
 
-
-
-
 import com.swathy.salesorder.models.Item;
 import com.swathy.salesorder.models.Order;
 import com.swathy.salesorder.repository.ItemDao;
@@ -18,49 +15,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet(urlPatterns = {"/InvoiceServlet"})
 public class InvoiceServlet extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out=response.getWriter();  
-        
-        String sno=request.getParameter("salesOrderNo");  
-        Order o=OrderDao.getOrderById(sno);  
-        List<Item> list=ItemDao.getItemByNo(sno); 
-        
-        request.setAttribute("CustomerName",o.getCustomerName());
-        request.setAttribute("SalesOrderDate",o.getSalesOrderDate());
-        request.setAttribute("ExpectedShipmentDate",o.getExpectedShipmentDate());
-        request.setAttribute("PaymentTerms",o.getPaymentTerms());
-        request.setAttribute("ShipmentCharge",o.getShipmentCharge());
-        request.setAttribute("TotalAmount",o.getTotalAmount());
-        request.setAttribute("SalesOrderNo",sno);
-       
+        PrintWriter out = response.getWriter();
+
+        String sno = request.getParameter("salesOrderNo");
+        Order o = OrderDao.getOrderById(sno);
+        List<Item> list = ItemDao.getItemByNo(sno);
+
+        request.setAttribute("CustomerName", o.getCustomerName());
+        request.setAttribute("SalesOrderDate", o.getSalesOrderDate());
+        request.setAttribute("ExpectedShipmentDate", o.getExpectedShipmentDate());
+        request.setAttribute("PaymentTerms", o.getPaymentTerms());
+        request.setAttribute("ShipmentCharge", o.getShipmentCharge());
+        request.setAttribute("TotalAmount", o.getTotalAmount());
+        request.setAttribute("SalesOrderNo", sno);
+
         request.setAttribute("OrderNo", list);
         ServletContext sc = this.getServletContext();
         RequestDispatcher dispatcher = request.getRequestDispatcher("Invoice.jsp");
         dispatcher.forward(request, response);
-      
-        out.close();  }
 
-  
+        out.close();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -1,10 +1,9 @@
 package com.swathy.salesorder.servlets;
 
-
-
 import com.swathy.salesorder.models.Shipping;
 import com.swathy.salesorder.models.util.ShowData;
 import com.swathy.salesorder.repository.OrderDao;
+import com.swathy.salesorder.repository.PackageDao;
 import com.swathy.salesorder.repository.ShippingDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,16 +25,18 @@ public class ShippingList extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        System.out.println("Coming inside ShippingList");
-        List<ShowData> list=ShippingDao.getAllShippings();  
+        String sno = request.getParameter("salesOrderNo");
+        List<ShowData> list = ShippingDao.getAllShippings(sno);
         request.setAttribute("listOrders", list);
+
         ServletContext sc = this.getServletContext();
         RequestDispatcher dispatcher = request.getRequestDispatcher("ShippingView.jsp");
         dispatcher.forward(request, response);
-          
-        out.close();  }
+
+        out.close();
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -1,5 +1,3 @@
-
-
 package com.swathy.salesorder.servlets;
 
 import com.swathy.salesorder.models.Order;
@@ -16,51 +14,40 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Swathy
  */
-@WebServlet(name="UpdatePayment", urlPatterns={"/UpdatePayment"})
+@WebServlet(name = "UpdatePayment", urlPatterns = {"/UpdatePayment"})
 public class UpdatePayment extends HttpServlet {
-   
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        Order e=new Order(); 
-        String salesorderno=request.getParameter("salesOrderNo"); 
-        int status=OrderDao.updatePayment(salesorderno);  
-        if(status>0){  
-          
-          out.println("<script type=\"text/javascript\">");
-          out.println("alert('Marked as paid successfully!');");
-          out.println("</script>");
-            request.getRequestDispatcher("ViewServlet").include(request, response);  
-        }else{  
-          
-          out.println("<script type=\"text/javascript\">");
-          out.println("alert('Sorry! unable to mark payment');");
-          out.println("</script>");
-          request.getRequestDispatcher("ViewServlet").include(request, response); 
-        }  
-          
-        out.close();  
-           
-        
-    } 
+        Order e = new Order();
+        String salesorderno = request.getParameter("salesOrderNo");
+        int status = OrderDao.updatePayment(salesorderno);
+        if (status > 0) {
 
-    
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Marked as paid successfully!');");
+            out.println("</script>");
+
+        }
+        request.getRequestDispatcher("InvoiceServlet").include(request, response);
+        out.close();
+
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
-    } 
-
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-   
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     @Override
     public String getServletInfo() {
         return "Short description";

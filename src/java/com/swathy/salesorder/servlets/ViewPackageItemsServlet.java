@@ -4,7 +4,6 @@ import com.swathy.salesorder.models.Item;
 import com.swathy.salesorder.models.Order;
 import com.swathy.salesorder.repository.ItemDao;
 import com.swathy.salesorder.repository.OrderDao;
-import com.swathy.salesorder.repository.PackageDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,24 +17,24 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author vanit
+ * @author Swathy
  */
-@WebServlet(urlPatterns = {"/AddDelivery"})
-public class AddDelivery extends HttpServlet {
+@WebServlet(name = "PackageItemsServlet", urlPatterns = {"/PackageItemsServlet"})
+public class ViewPackageItemsServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
         String packageId = request.getParameter("packageId");
 
-        int status = PackageDao.updateDeliveryStatus(packageId);
-        if (status > 0) {
+        List<Item> list = ItemDao.getPackageById(packageId);
 
-            ServletContext sc = this.getServletContext();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ShippingList");
-            dispatcher.forward(request, response);
-        }
+        request.setAttribute("packageId", packageId);
+        request.setAttribute("OrderNo", list);
+        ServletContext sc = this.getServletContext();
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PackageItems.jsp");
+        dispatcher.forward(request, response);
 
         out.close();
     }
@@ -55,6 +54,6 @@ public class AddDelivery extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

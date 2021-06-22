@@ -1,8 +1,5 @@
 package com.swathy.salesorder.servlets;
 
-
-
-
 import com.swathy.salesorder.models.Item;
 import com.swathy.salesorder.repository.ItemDao;
 import com.swathy.salesorder.repository.PackageDao;
@@ -25,42 +22,37 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/CreateShipment"})
 public class CreateShipment extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-        
-        String sno=request.getParameter("salesOrderNo");  
-        Package o=PackageDao.getPackageNumber(sno);  
-       
-       
-        List<Item> list=ItemDao.getItemByNo(sno);    
-        request.setAttribute("PackageId",o.getPackageId());
-        request.setAttribute("salesorderno",sno);
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        String packageId = request.getParameter("packageId");
+
+        List<Item> list = ItemDao.getPackageById(packageId);
+
+        request.setAttribute("PackageId", packageId);
+
         request.setAttribute("OrderNo", list);
         ServletContext sc = this.getServletContext();
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Shipment.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ShippingForm.jsp");
         dispatcher.forward(request, response);
-      
-        out.close();  
+
+        out.close();
     }
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
- 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -1,4 +1,3 @@
-
 package com.swathy.salesorder.repository;
 
 import com.swathy.salesorder.config.DbOperations;
@@ -10,23 +9,22 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ShippingDao {
 
-    public static List<ShowData> getAllShippings() {
+    public static List<ShowData> getAllShippings(String salesOrderNo) {
         List<ShowData> list = new ArrayList<>();
 
         try {
             Connection con = DbOperations.getConnection();
-            PreparedStatement ps = con.prepareStatement("select SalesOrder,PackageId,shippingId,shippingDate from orderdetails inner join  shipping using(SalesOrder)  ");
+            PreparedStatement ps = con.prepareStatement("select PackageId,shippingId,shippingDate from packages inner join  shipping using(PackageId) where SalesOrder=? and PackageStatus='Yet to be delivered'");
+            ps.setString(1, salesOrderNo);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 ShowData e = new ShowData();
 
-                e.setSalesOrderNo(rs.getString(1));
-                e.setPackageId(rs.getString(2));
-                e.setShipmentId(rs.getString(3));
-                e.setShipmentDate(rs.getString(4));
+                e.setPackageId(rs.getString(1));
+                e.setShipmentId(rs.getString(2));
+                e.setShipmentDate(rs.getString(3));
 
                 list.add(e);
             }
@@ -38,19 +36,18 @@ public class ShippingDao {
         return list;
     }
 
-    public static int saveShipment(Shipping e, String packageId, String salesOrderNo) {
+    public static int saveShipment(Shipping e, String packageId) {
         int status = 0;
         try {
             Connection con = DbOperations.getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "insert into shipping(PackageId,SalesOrder,shippingId,shippingDate,carrier,trackingId) values (?,?,?,?,?,?)");
+                    "insert into shipping(PackageId,shippingId,shippingDate,carrier,trackingId) values (?,?,?,?,?)");
             ps.setString(1, packageId);
 
-            ps.setString(2, salesOrderNo);
-            ps.setString(3, e.getShipmentId());
-            ps.setString(4, e.getShipmentDate());
-            ps.setString(5, e.getCarrier());
-            ps.setString(6, e.getTrackingId());
+            ps.setString(2, e.getShipmentId());
+            ps.setString(3, e.getShipmentDate());
+            ps.setString(4, e.getCarrier());
+            ps.setString(5, e.getTrackingId());
 
             status = ps.executeUpdate();
 
@@ -61,4 +58,5 @@ public class ShippingDao {
 
         return status;
     }
+
 }

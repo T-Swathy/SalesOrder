@@ -1,11 +1,5 @@
 package com.swathy.salesorder.servlets;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 import com.swathy.salesorder.models.Order;
 import com.swathy.salesorder.models.Package;
@@ -26,49 +20,42 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/AddPackage"})
 public class AddPackage extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-          
-        String packageId=request.getParameter("packageid");  
-        String salesorderno=request.getParameter("salesorderno");  
-        String packageDate=request.getParameter("packagedate");  
-        String[] quantity=request.getParameterValues("quantity[]");
-        String[] productName=request.getParameterValues("productName[]");
-        String[] productQuantity=request.getParameterValues("productQuantity[]");
-        for(int i=0;i<quantity.length;i++){
-            System.out.println(quantity[i]);
-            System.out.println(productName[i]);
-            System.out.println(productQuantity[i]);}
-       
-       
-        Package p=new Package();
-       
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        String packageId = request.getParameter("packageid");
+        String salesorderno = request.getParameter("salesorderno");
+        String packageDate = request.getParameter("packagedate");
+        String[] quantity = request.getParameterValues("quantity[]");
+        String[] productName = request.getParameterValues("productName[]");
+        String[] productQuantity = request.getParameterValues("productQuantity[]");
+
+        Package p = new Package();
+
         p.setPackageId(packageId);
         p.setPackageDate(packageDate);
         p.setQuantity(quantity);
         p.setItemName(productName);
-        
-        int status=PackageDao.savePackage(p,salesorderno) & PackageDao.savePackageItems(p);  
-        if(status>0){  
-          
-          out.println("<script type=\"text/javascript\">");
-          out.println("alert('Package created successfully!');");
-          out.println("</script>");
-            request.getRequestDispatcher("ViewServlet").include(request, response);  
-        }else{  
-          
-          out.println("<script type=\"text/javascript\">");
-          out.println("alert('Sorry! unable to create package');");
-          out.println("</script>");
-        }  
-          
-        out.close();  
+
+        int status = PackageDao.savePackage(p, salesorderno) & PackageDao.savePackageItems(p);
+        if (status > 0) {
+
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Package created successfully!');");
+            out.println("</script>");
+            request.getRequestDispatcher("ViewServlet").include(request, response);
+        } else {
+
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Sorry! unable to create package');");
+            out.println("</script>");
+        }
+
+        out.close();
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -81,7 +68,6 @@ public class AddPackage extends HttpServlet {
         processRequest(request, response);
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";

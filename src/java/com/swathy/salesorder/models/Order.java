@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.swathy.salesorder.models;
 
 import java.util.ArrayList;
@@ -14,10 +10,10 @@ import java.util.List;
  */
 public class Order {
 
-    private String customerName, salesOrderDate, expectedShipmentDate, paymentTerms, salesOrderNo, 
+    private String customerName, salesOrderDate, expectedShipmentDate, paymentTerms, salesOrderNo,
             shipmentCharge, totalAmount, orderStatus,
             invoiceStatus, paymentStatus;
-    
+
     private List<Item> Items = new ArrayList<>();
 
     public List<Item> getItems() {
@@ -83,8 +79,6 @@ public class Order {
     public String getTotalAmount() {
         return this.totalAmount;
     }
-
-  
 
     public void setInvoiceStatus(String invoiceStatus) {
         this.invoiceStatus = invoiceStatus;
