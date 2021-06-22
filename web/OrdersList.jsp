@@ -43,11 +43,12 @@
                                 <th>Sales Order No</th>
                                 <th>Sales Order Date</th>
                                 <th>Customer Name</th>
-                                <th>Order Status</th>
+                                
                                 <th>Invoice Status</th>
                                 <th>Payment Status</th>
                                 <th>Change Status</th>
                                 <th>View</th>
+                                <th>Payment</th>
                                 <th>Invoice</th>
                             </tr>
                         </thead>
@@ -65,9 +66,7 @@
                                     <td>
                                         <c:out value="${user.getCustomerName()}" />
                                     </td>
-                                    <td>
-                                        <c:out value="${user.getOrderStatus()}" />
-                                    </td>
+                                   
                                      <td>
                                         <c:out value="${user.getInvoiceStatus()}" />
                                     </td>
@@ -76,21 +75,10 @@
                                     </td>
                                     <td>
                                        
-                                        <c:set var="str"  value="${user.getOrderStatus()}" />
-                                        <jsp:useBean id="str" type="java.lang.String" />
-                                        <c:if test='<%=str.equalsIgnoreCase("not yet packed")%>'> 
+                                      
                                         <a href="CreatePackage?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Mark as packed</a>
-                                        </c:if>
-                                         <c:set var="str1"  value="${user.getOrderStatus()}" />
-                                         <jsp:useBean id="str1" type="java.lang.String" />
-                                         <c:if test='<%=str1.equalsIgnoreCase("yet to be shipped")%>'> 
-                                        <a href="CreateShipment?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Mark as shipped</a>
-                                        </c:if>
-                                         <c:set var="str2"  value="${user.getOrderStatus()}" />
-                                         <jsp:useBean id="str2" type="java.lang.String" />
-                                         <c:if test='<%=str1.equalsIgnoreCase("yet to be delivered")%>'> 
-                                        <a href="AddDelivery?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Mark as delivered</a>
-                                         </c:if></td><td>
+                                       
+                                        </td><td>
                                         <a href="View1Servlet?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">View Order</a>
                                        
 
@@ -98,7 +86,13 @@
       
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
-                                    <td>   <a href="UpdatePayment?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Mark as Paid</a>
+                                    <td> 
+                                         <c:set var="str3"  value="${user.getPaymentStatus()}" />
+                                        <jsp:useBean id="str3" type="java.lang.String" />
+                                        <c:if test='<%=str3.equalsIgnoreCase("not paid")%>'> 
+                                        <a href="UpdatePayment?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Mark as Paid</a>
+                                        </c:if>
+                                    </td>
                                     <td>
                                         <a href="InvoiceServlet?salesOrderNo=<c:out value='${user.getSalesOrderNo()}' />">Create Invoice</a>
                                        

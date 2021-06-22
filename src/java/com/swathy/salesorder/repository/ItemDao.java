@@ -23,7 +23,7 @@ public class ItemDao {
         List<Item> list=new ArrayList<Item>();  
        try{  
             Connection con=DbOperations.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select ItemName,Quantity,Rate,Discount,Amount from items where SalesOrder=? ");  
+            PreparedStatement ps=con.prepareStatement("select ItemName,Quantity,Rate,Discount,Amount from items where SalesOrder=? order by ItemName ");  
             ps.setString(1, salesorderno);
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
@@ -34,9 +34,40 @@ public class ItemDao {
                 e.setProductDiscount(rs.getString(4));
                 e.setProductAmount(rs.getString(5));
                 list.add(e);  
-            }  
+            } 
+           
             con.close();  
         }catch(Exception e){e.printStackTrace();}  
+          
+        return list;  
+    }  
+      public static List<Item> getQuantitiesPacked(String salesorderno){  
+         List<Item> list=new ArrayList<Item>();  
+       
+         int i=0;
+          
+        try{  
+            Connection con=DbOperations.getConnection();  
+            PreparedStatement ps=con.prepareStatement("select sum(Quantity) from packages inner join packageitems using(PackageId) where SalesOrder=? group by Item order by Item");  
+            ps.setString(1,salesorderno);  
+            ResultSet rs=ps.executeQuery();
+           
+           
+            
+            if(rs!=null){
+          
+            while(rs.next()){  
+                Item e=new Item();  
+                System.out.println("Hi");
+                
+              e.setQuantityPacked(rs.getString(1));
+                list.add(e);
+              
+                
+                 
+            }  }
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
           
         return list;  
     }  

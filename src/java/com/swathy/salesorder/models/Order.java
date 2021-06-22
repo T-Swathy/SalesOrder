@@ -84,13 +84,7 @@ public class Order {
         return this.totalAmount;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public String getOrderStatus() {
-        return this.orderStatus;
-    }
+  
 
     public void setInvoiceStatus(String invoiceStatus) {
         this.invoiceStatus = invoiceStatus;

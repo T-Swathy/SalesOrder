@@ -37,7 +37,7 @@ public class AddShipment extends HttpServlet {
         shipment.setCarrier(carrier);
         shipment.setTrackingId(trackingId);
 
-        int status = ShippingDao.saveShipment(shipment, packageId, salesorderno) & OrderDao.updateShipment(salesorderno);
+        int status = ShippingDao.saveShipment(shipment, packageId, salesorderno) ;
         if (status > 0) {
 
             out.println("<script type=\"text/javascript\">");

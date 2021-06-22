@@ -35,21 +35,29 @@ public class AddPackage extends HttpServlet {
         String packageId=request.getParameter("packageid");  
         String salesorderno=request.getParameter("salesorderno");  
         String packageDate=request.getParameter("packagedate");  
+        String[] quantity=request.getParameterValues("quantity[]");
+        String[] productName=request.getParameterValues("productName[]");
+        String[] productQuantity=request.getParameterValues("productQuantity[]");
+        for(int i=0;i<quantity.length;i++){
+            System.out.println(quantity[i]);
+            System.out.println(productName[i]);
+            System.out.println(productQuantity[i]);}
        
        
-        Order e=new Order();  
         Package p=new Package();
-        e.setSalesOrderNo(salesorderno);  
+       
         p.setPackageId(packageId);
         p.setPackageDate(packageDate);
+        p.setQuantity(quantity);
+        p.setItemName(productName);
         
-        int status=PackageDao.savePackage(p,salesorderno) & OrderDao.updatePackage(salesorderno);  
+        int status=PackageDao.savePackage(p,salesorderno) & PackageDao.savePackageItems(p);  
         if(status>0){  
           
           out.println("<script type=\"text/javascript\">");
           out.println("alert('Package created successfully!');");
           out.println("</script>");
-            request.getRequestDispatcher("index.html").include(request, response);  
+            request.getRequestDispatcher("ViewServlet").include(request, response);  
         }else{  
           
           out.println("<script type=\"text/javascript\">");

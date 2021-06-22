@@ -28,6 +28,7 @@ public class ShippingList extends HttpServlet {
             throws ServletException, IOException {
       response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        System.out.println("Coming inside ShippingList");
         List<ShowData> list=ShippingDao.getAllShippings();  
         request.setAttribute("listOrders", list);
         ServletContext sc = this.getServletContext();

@@ -38,7 +38,7 @@ public class InvoiceServlet extends HttpServlet {
         request.setAttribute("ShipmentCharge",o.getShipmentCharge());
         request.setAttribute("TotalAmount",o.getTotalAmount());
         request.setAttribute("SalesOrderNo",sno);
-        request.setAttribute("OrderStatus",o.getOrderStatus());
+       
         request.setAttribute("OrderNo", list);
         ServletContext sc = this.getServletContext();
         RequestDispatcher dispatcher = request.getRequestDispatcher("Invoice.jsp");

@@ -143,8 +143,7 @@
 </div>
     <div class="container text-left">
 
-                        <a href="UpdateInvoice?salesOrderNo=<%= request.getAttribute("SalesOrderNo") %>" class="btn btn-primary mb-2">Add
-     New Sales Order</a>
+                        <a href="UpdateInvoice?salesOrderNo=<%= request.getAttribute("SalesOrderNo") %>" class="btn btn-primary mb-2">Save and Add</a>
                     </div>
         </body>
     </html>

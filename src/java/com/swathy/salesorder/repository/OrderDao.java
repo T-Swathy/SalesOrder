@@ -21,18 +21,17 @@ public class OrderDao {
         try{  
             Connection con=DbOperations.getConnection(); 
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into orderdetails(CustomerName,SalesOrder,SalesOrderDate,ExpectedShipmentDate,PaymentTerms,ShippingCharges,TotalAmount,orderStatus,InvoiceStatus,PaymentStatus) values (?,?,?,?,?,?,?,?,?,?)");  
+                         "insert into orderdetails(CustomerName,SalesOrder,SalesOrderDate,ExpectedShipmentDate,PaymentTerms,ShippingCharges,TotalAmount,InvoiceStatus,PaymentStatus) values (?,?,?,?,?,?,?,?,?)");  
             ps.setString(1,e.getCustomerName());  
-            
             ps.setString(2,e.getSalesOrderNo());  
             ps.setString(3,e.getSalesOrderDate());  
             ps.setString(4,e.getExpectedShipmentDate());  
             ps.setString(5,e.getPaymentTerms());  
             ps.setString(6,e.getShipmentCharge());
             ps.setString(7,e.getTotalAmount());
-            ps.setString(8,"Not yet packed");
-            ps.setString(9,"not invoiced");
-             ps.setString(10,"not paid");
+           
+            ps.setString(8,"not invoiced");
+            ps.setString(9,"not paid");
             status=ps.executeUpdate();  
               
             con.close();  
@@ -46,7 +45,7 @@ public class OrderDao {
           
         try{  
             Connection con=DbOperations.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select SalesOrder,SalesOrderDate,CustomerName,OrderStatus,InvoiceStatus,PaymentStatus from orderdetails");  
+            PreparedStatement ps=con.prepareStatement("select SalesOrder,SalesOrderDate,CustomerName,InvoiceStatus,PaymentStatus from orderdetails");  
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
                 Order e=new Order();  
@@ -55,9 +54,9 @@ public class OrderDao {
                 e.setSalesOrderNo(rs.getString(1));  
                 e.setSalesOrderDate(rs.getString(2));  
                 e.setCustomerName(rs.getString(3));
-                e.setOrderStatus(rs.getString(4));
-                e.setInvoiceStatus(rs.getString(5));
-                e.setPaymentStatus(rs.getString(6));
+                
+                e.setInvoiceStatus(rs.getString(4));
+                e.setPaymentStatus(rs.getString(5));
                 list.add(e);  
             }  
             con.close();  
@@ -67,46 +66,16 @@ public class OrderDao {
     }  
      
     
-      public static int updatePackage(String salesOrderNo){  
-        int status=0;  
-        try{  
-            Connection con=DbOperations.getConnection(); 
-            PreparedStatement ps=con.prepareStatement(  
-                         "update orderdetails set orderStatus='Yet to be shipped' where SalesOrder=?");  
-            ps.setString(1,salesOrderNo);
-           
-              
-            status=ps.executeUpdate();  
-              
-            con.close();  
-        }catch(Exception ex){ex.printStackTrace();}  
-          
-        return status;  
-    }  
+    
      
      
-      public static int updateShipment(String salesOrderNo){  
-        int status=0;  
-        try{  
-            Connection con=DbOperations.getConnection(); 
-            PreparedStatement ps=con.prepareStatement(  
-                         "update orderdetails set orderStatus='Yet to be delivered' where SalesOrder=?");  
-            ps.setString(1,salesOrderNo);
-           
-              
-            status=ps.executeUpdate();  
-              
-            con.close();  
-        }catch(Exception ex){ex.printStackTrace();}  
-          
-        return status;  
-    }  
+    
    public static Order getOrderById(String salesorderno){  
         Order e=new Order();  
           
         try{  
             Connection con=DbOperations.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select CustomerName,SalesOrder,SalesOrderDate,ExpectedShipmentDate,PaymentTerms,ShippingCharges,TotalAmount,orderStatus from orderdetails where SalesOrder=?");  
+            PreparedStatement ps=con.prepareStatement("select CustomerName,SalesOrder,SalesOrderDate,ExpectedShipmentDate,PaymentTerms,ShippingCharges,TotalAmount from orderdetails where SalesOrder=?");  
             ps.setString(1,salesorderno);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
@@ -117,7 +86,7 @@ public class OrderDao {
                 e.setPaymentTerms(rs.getString(5));
                 e.setShipmentCharge(rs.getString(6));
                 e.setTotalAmount(rs.getString(7));
-                e.setOrderStatus(rs.getString(8));
+              
                 
             }  
             con.close();  
@@ -125,22 +94,7 @@ public class OrderDao {
           
         return e;  
     }  
-   public static int updateDelivery(String salesOrderNo){  
-       int status=0;  
-        try{  
-            Connection con=DbOperations.getConnection(); 
-            PreparedStatement ps=con.prepareStatement(  
-                         "update orderdetails set orderStatus='Delivered' where SalesOrder=?");  
-            ps.setString(1,salesOrderNo);
-           
-              
-            status=ps.executeUpdate();  
-              
-            con.close();  
-        }catch(Exception ex){ex.printStackTrace();}  
-          
-        return status;  
-    }  
+   
   
    
     

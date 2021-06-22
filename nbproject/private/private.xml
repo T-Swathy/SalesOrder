@@ -4,24 +4,34 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/Package.jsp</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/ViewServlet.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/ShippingList.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/ShippingView.jsp</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/OrderDao.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/Shipment.jsp</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/CreateShipment.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/Add.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/View1Servlet.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/PackageList.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/AddShipment.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/PackagesView.jsp</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/repository/ShippingDao.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/AddShipment.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/config/DbOperations.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/UpdateInvoice.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/repository/PackageDao.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/models/Item.java</file>
             <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/OrderById.jsp</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/Orders.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/AddDelivery.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/CreatePackage.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/AddPackage.java</file>
-            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/OrdersList.jsp</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/Invoice.jsp</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/repository/ItemDao.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/ShippingList.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/AddDelivery.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/models/Package.java</file>
             <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/index.html</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/CreatePackage.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/AddPackage.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/models/util/ShowData.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/ShippingView.jsp</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/Shipment.jsp</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/models/Order.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/CreateShipment.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/ViewServlet.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/repository/OrderDao.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/PackagesView.jsp</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/ViewOrdersByIdServlet.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/PackageList.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/Add.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/src/java/com/swathy/salesorder/servlets/InvoiceServlet.java</file>
+            <file>file:/C:/Users/vanit/Documents/NetBeansProjects/SalesOrder/web/OrdersList.jsp</file>
         </group>
     </open-files>
 </project-private>

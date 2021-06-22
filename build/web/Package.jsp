@@ -4,8 +4,10 @@
     Author     : vanit
 --%>
 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 
@@ -66,7 +68,7 @@
                                             <label  class="col-md-4 control-label" >Package Date</label>
                                             <div class="col-md-10 inputGroupContainer">
                                                 <div class="input-group">
-                                                    <input class="form-control"  type="text"  name="packagedate">
+                                                    <input class="form-control"  type="date"  name="packagedate">
                                                 </div>
                                             </div>
                                         </div>
@@ -76,26 +78,38 @@
                                     <thead>
                                         <tr>
                                             <th>Item</th>
-                                            <th>Quantity</th>
+                                            <th>Quantity ordered</th>
+                                            <th>Packed</th>
+                                            <th>Quantity to pack</th>
 
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <!--   for (Todo todo: todos) {  -->
-                                        <c:forEach var="order" items="${OrderNo}">
 
-                                            <tr>
-                                                <td>
-                                                    <c:out value="${order.getProductName()}" />
-                                                </td>
-                                                <td>
-                                                    <c:out value="${order.getProductQuantity()}" />
-                                                </td>
+                                 
+                                   
 
-                                            </tr>
-                                        </c:forEach>
-                                        <!-- } -->
-                                    </tbody>
+                                   
+
+                                        <tr>
+                                             <c:forEach var="order" items="${OrderNo}">
+                                            <td>
+                                                <input class="form-control" type="text" name="productName[]" value="${order.getProductName()}" >
+                                              
+                                            </td>
+                                            <td>
+                                                <input class="form-control" type ="text" name="productQuantity[]" value="${order.getProductQuantity()}">
+                                            </td>
+                                            
+                                            <td> <input class="form-control" type="text" name="quantitypacked[]" value="${order.getQuantityPacked()}" > </td>
+                                            <td>
+                                                <input class="form-control" type="text" name="quantity[]" >
+                                            </td>
+
+                                        </tr>
+                                         </c:forEach>
+                                   
+                                   
+
 
                                 </table>
                                 <button type="submit" class="btn btn-primary mb-2">SUBMIT</button>

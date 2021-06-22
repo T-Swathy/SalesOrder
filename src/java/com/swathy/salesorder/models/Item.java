@@ -12,7 +12,7 @@ package com.swathy.salesorder.models;
 
  public class Item {
    private String[] products,quantity,rate,discount,amount;
-   private String productRate,productDiscount,productAmount,productName;
+   private String productRate,productDiscount,productAmount,productName,quantityPacked;
     private String productQuantity;
     public void setProducts(String[] products)
 {
@@ -94,5 +94,13 @@ public String getProductAmount()
 {
     return this.productAmount;
 }
+    public void setQuantityPacked(String quantityPacked)
+    {
+        this.quantityPacked=quantityPacked;
+    }
+    public String getQuantityPacked()
+    {
+        return this.quantityPacked;
+    }
 
 }

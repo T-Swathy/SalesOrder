@@ -18,7 +18,7 @@ public class ShippingDao {
 
         try {
             Connection con = DbOperations.getConnection();
-            PreparedStatement ps = con.prepareStatement("select SalesOrder,PackageId,shippingId,shippingDate from orderdetails inner join  shipping using(SalesOrder) where orderStatus='Yet to be delivered'");
+            PreparedStatement ps = con.prepareStatement("select SalesOrder,PackageId,shippingId,shippingDate from orderdetails inner join  shipping using(SalesOrder)  ");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 ShowData e = new ShowData();
@@ -43,7 +43,7 @@ public class ShippingDao {
         try {
             Connection con = DbOperations.getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "insert into shipping(PackageId,SalesShipping,shippingId,shippingDate,carrier,trackingId) values (?,?,?,?,?,?)");
+                    "insert into shipping(PackageId,SalesOrder,shippingId,shippingDate,carrier,trackingId) values (?,?,?,?,?,?)");
             ps.setString(1, packageId);
 
             ps.setString(2, salesOrderNo);
